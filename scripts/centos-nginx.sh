@@ -35,4 +35,6 @@ cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master/files/info.php
 
-service httpd restart
+service ngnix restart
+service stop iptables
+chkconfig --level 123456 nginx off
