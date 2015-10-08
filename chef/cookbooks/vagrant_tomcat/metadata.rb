@@ -11,4 +11,4 @@ depends 'tomcat_latest'
 
 supports 'centos'
 
-recipe 'vagrant_tomcat::default, 'Updates Tomcat installation'
+recipe 'vagrant_tomcat::default', 'Updates Tomcat installation'
