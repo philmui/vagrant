@@ -9,23 +9,21 @@ yum install -y nano git unzip screen
 # nginx
 yum install -y epel-release
 yum install -y nginx
-chkconfig --add nginx
-chkconfig nginx on
-service nginx stop
+systemctl enable nginx.service
+systemctl stop nginx.service
 
 mv /usr/share/nginx/html /usr/share/nginx/html-orig 
 ln -s /vagrant /usr/share/nginx/html
 
-service nginx start
+systemctl start nginx.service
 
 # Python
+sudo yum install python34
 
 # MySQL
-yum install -y mysql mysql-server mysql-devel
-chkconfig --add mysqld
-chkconfig mysqld on
-
-service mysqld start
+yum install -y mariadb-server mariadb
+sudo systemctl start mariadb
+sudo systemctl enable mariadb.service
 
 mysql -u root -e "SHOW DATABASES";
 
@@ -34,6 +32,10 @@ cd /vagrant
 sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master/files/index.html
 sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master/files/info.php
 
-service nginx restart
-service iptables stop
-chkconfig --level 123456 iptables off
+systemctl restart nginx.service
+
+# Disable firewall
+systemctl stop firewalld
+systemctl mask firewalld
+systemctl disable iptables
+systemctl disable ip6tables
