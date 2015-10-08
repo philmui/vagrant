@@ -6,16 +6,17 @@ yum update -y --exclude=kernel
 # tools
 yum install -y nano git unzip screen
 
-# apache
+# nginx
+yum install -y epel-release
 yum install -y nginx
 chkconfig --add nginx
 chkconfig nginx on
 service nginx stop
 
-#rm -rf /var/www/html
-#ln -s /vagrant /var/www/html
+mv /usr/local/nginx/html /usr/local/nginx/html-orig 
+ln -s /vagrant /usr/local/nginx/html
 
-service httpd start
+service nginx start
 
 # Python
 yum install -y python3 pip
