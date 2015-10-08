@@ -20,8 +20,8 @@ service httpd start
 # PHP
 yum install -y php php-cli php-common php-devel php-mysql
 
-# Python                                                                                                                       cd /opt
-if [! -e /usr/local/bin/python2.7] then
+# Python
+if [ ! -e /usr/local/bin/python2.7 ]; then
     cd /opt
     sudo wget --no-check-certificate -q https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
     sudo tar xf Python-2.7.10.tgz
@@ -30,12 +30,12 @@ if [! -e /usr/local/bin/python2.7] then
     sudo make && sudo make altinstall
 fi
 
-if [! -e /usr/local/bin/pip ] then
+if [ ! -e /usr/local/bin/pip ]; then
     sudo wget https://bootstrap.pypa.io/get-pip.py
     sudo /usr/local/bin/python2.7 get-pip.py
 fi
 
-if [! -e /usr/local/bin/virtualenv ] then
+if [ ! -e /usr/local/bin/virtualenv ]; then
     sudo /usr/local/bin/pip install virtualenv
 fi
 
