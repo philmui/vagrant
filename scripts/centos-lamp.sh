@@ -30,7 +30,7 @@ sudo make && sudo make altinstall
 sudo wget https://bootstrap.pypa.io/get-pip.py
 sudo /usr/local/bin/python2.7 get-pip.py
 
-pip install virtualenv
+sudo pip install virtualenv
 
 # MySQL
 yum install -y mysql mysql-server mysql-devel
