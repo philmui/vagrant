@@ -37,5 +37,5 @@ sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master
 sudo -u vagrant wget -q https://raw.githubusercontent.com/philmui/vagrant/master/files/info.php
 
 service ngnix restart
-service stop iptables
-chkconfig --level 123456 nginx off
+service iptables stop
+chkconfig --level 123456 iptables off
