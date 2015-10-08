@@ -21,16 +21,25 @@ service httpd start
 yum install -y php php-cli php-common php-devel php-mysql
 
 # Python                                                                                                                       cd /opt
-sudo wget --no-check-certificate -q https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
-sudo tar xf Python-2.7.10.tgz
-cd Python-2.7.10
-sudo ./configure --prefix=/usr/local
-sudo make && sudo make altinstall
+if [! -e /usr/local/bin/python2.7] then
 
-sudo wget https://bootstrap.pypa.io/get-pip.py
-sudo /usr/local/bin/python2.7 get-pip.py
+    cd /opt
+    sudo wget --no-check-certificate -q https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
+    sudo tar xf Python-2.7.10.tgz
+    cd Python-2.7.10
+    sudo ./configure --prefix=/usr/local
+    sudo make && sudo make altinstall
 
-sudo pip install virtualenv
+fi
+
+if [! -e /usr/local/bin/pip ] then
+    sudo wget https://bootstrap.pypa.io/get-pip.py
+    sudo /usr/local/bin/python2.7 get-pip.py
+fi
+
+if [! -e /usr/local/bin/virtualenv ] then
+    sudo /usr/local/bin/pip install virtualenv
+fi
 
 # MySQL
 yum install -y mysql mysql-server mysql-devel
