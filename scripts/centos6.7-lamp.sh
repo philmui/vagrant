@@ -22,14 +22,12 @@ yum install -y php php-cli php-common php-devel php-mysql
 
 # Python                                                                                                                       cd /opt
 if [! -e /usr/local/bin/python2.7] then
-
     cd /opt
     sudo wget --no-check-certificate -q https://www.python.org/ftp/python/2.7.10/Python-2.7.10.tgz
     sudo tar xf Python-2.7.10.tgz
     cd Python-2.7.10
     sudo ./configure --prefix=/usr/local
     sudo make && sudo make altinstall
-
 fi
 
 if [! -e /usr/local/bin/pip ] then
